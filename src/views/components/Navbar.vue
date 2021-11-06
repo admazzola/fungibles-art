@@ -6,7 +6,7 @@
         <div class="brand">
         
         </div>
-        <router-link to="/" class='brand w-nav-brand w--current flex-grow inline text-xl text-gray-900 font-bold'>ON SECONDARY</router-link>
+        <router-link to="/" class='brand no-underline w--current flex-grow inline text-xl text-gray-200 font-bold'>Fungibles.Art</router-link>
 
  
  
