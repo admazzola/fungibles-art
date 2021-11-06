@@ -34,7 +34,7 @@
 
 
                 <AssetPricesTable
-                v-bind:labelsArray="['blockNumber','nftType','currencyType','bidAmount' ]"
+                v-bind:coinDataArray="allCoinData"
                 
                />
 
@@ -72,7 +72,7 @@
 
 v-bind:rowsArray="salesRowsArray"
                 v-bind:clickedRowCallback="clickedSalesRowCallback"
-                
+
 */
 
 
@@ -101,11 +101,9 @@ export default {
       web3Plug: new Web3Plug() ,
       activePanelId: null,
       
-      
-      nftContractOptionsList: [] ,
-      filterByNFTContractAddress: null,
+       
 
-    
+      allCoinData:[]
 
       
     }
@@ -168,8 +166,10 @@ export default {
             
                let inputData = {requestType: 'all_coin_data', input: {   } } 
 
-            let coindata = await StarflaskApiHelper.resolveStarflaskQuery("https://api.starflask.com/api/v1/testapikey", inputData)
-
+               let response = await StarflaskApiHelper.resolveStarflaskQuery("https://api.starflask.com/api/v1/testapikey", inputData)
+               
+                this.allCoinData = response.output 
+               console.log('meep',  this.allCoinData )
             /* this.bidRowsArray.sort(function(a, b) {
               return b.currencyTokenAmount - a.currencyTokenAmount;
             })*/
