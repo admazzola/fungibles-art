@@ -47,11 +47,15 @@ const UniswapPairABI = FileHelper.readJSONFile('./market-api-server/abi/UniswapV
                 let response = await sushiPairContract.methods.getReserves().call()
 
                
-                console.log('response', response )
+                
+ 
+                Object.assign( assetData,  response)
+
+                console.log('assetData', assetData )
 
                 //save to mongo ! 
 
-              //  await this.mongoInterface.upsertOne('coindata',{},{})
+                 await this.mongoInterface.upsertOne('coindata',{contractAddress: assetData.contractAddress},assetData)
 
 
             }
