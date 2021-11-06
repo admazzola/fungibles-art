@@ -1,12 +1,6 @@
 # Fungibles Art 
 
-
-
-
-### TODO 
-- store data in mongo db 
-
-- build frontend table that shows that data 
+Coin price tracker for fractionalized NFTs within NFTX 
 
   
 
