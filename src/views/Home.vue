@@ -167,9 +167,28 @@ export default {
                let inputData = {requestType: 'all_coin_data', input: {   } } 
 
                let response = await StarflaskApiHelper.resolveStarflaskQuery("https://api.starflask.com/api/v1/testapikey", inputData)
-               
-                this.allCoinData = response.output 
+
+
+                let coinDataArray = response.output 
+
+                coinDataArray.map(x => x.priceRatio = x._reserve0 / x._reserve1)
+
+
+                 coinDataArray.sort(function(a, b) {
+                  return b.priceRatio - a.priceRatio;
+                })
+
+                this.allCoinData = coinDataArray
+
+
+
+
+
                console.log('meep',  this.allCoinData )
+
+
+
+
             /* this.bidRowsArray.sort(function(a, b) {
               return b.currencyTokenAmount - a.currencyTokenAmount;
             })*/

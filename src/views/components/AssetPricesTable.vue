@@ -17,7 +17,7 @@
                
               <td style="text-align:left" class="py-8 px-2">   {{ row.name  }} (ERC20) </td>
 
-              <td style="text-align:left" >   {{ calculatePrice(row._reserve0,row._reserve1)  }} ETH </td>
+              <td style="text-align:left" >   {{ row.priceRatio.toFixed(2)  }} ETH </td>
 
                <td style="text-align:left" class="hover:bg-gray-500" >  
                   <a v-bind:href="'https://app.sushi.com/swap?outputCurrency='+row.contractAddress" target="_blank">
@@ -75,12 +75,7 @@ export default {
   methods: {
       clickedRow(row){
         this.clickedRowCallback(row)
-      },
-      calculatePrice(asset1,asset2){
-
-
-        return (asset1/asset2)
-      }
+      } 
   }
 }
 </script>
